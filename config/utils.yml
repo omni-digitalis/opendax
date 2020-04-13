@@ -2,6 +2,7 @@ images:
   applogic: rubykube/applogic:latest
   arke: gcr.io/openware-production/arke:2.3.1
   superset: amancevice/superset:0.28.1
+  valutti-service: valutti-service:latest
 superset:
   email: superset-admin@openware.com
   username: admin

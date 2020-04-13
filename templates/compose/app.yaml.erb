@@ -44,3 +44,11 @@ services:
       - "8081"
     volumes:
       - ../config/applogic/management_api_v2.yml:/home/app/config/management_api_v2.yml
+
+  valutti-service:
+      restart: always
+      image: "<%= @utils['images']['valutti-service'] %>"
+      env_file:
+        - ../config/valutti-service.env
+      expose:
+        - "3000"

@@ -18,7 +18,7 @@ static_resources:
               - "*"
               cors:
                 allow_origin:
-                - "<%= ssl_helper('http') %>://<%= @config['app']['subdomain'] %>.<%= @config['app']['domain'] %>"
+                - "*"
                 allow_methods: "PUT, GET, POST"
                 allow_headers: "content-type, x-grpc-web"
                 filter_enabled:
@@ -37,6 +37,11 @@ static_resources:
                 route:
                   cluster: applogic
                   prefix_rewrite: "/api/v2/"
+              - match:
+                  prefix: "/api/v2/valutti"
+                route:
+                  cluster: valutti-service
+                  prefix_rewrite: "/"                  
               - match:
                   prefix: "/api/v2/arke"
                 route:
@@ -126,6 +131,14 @@ static_resources:
     - socket_address:
         address: applogic
         port_value: 8081
+  - name: valutti-service
+    connect_timeout: 0.25s
+    type: strict_dns
+    lb_policy: round_robin
+    hosts:
+    - socket_address:
+        address: valutti-service
+        port_value: 3000
   - name: arke
     connect_timeout: 0.25s
     type: strict_dns

@@ -209,6 +209,23 @@ namespace :service do
     @switch.call(args, method(:start), method(:stop))
   end
 
+  desc 'Run the valutti-service application'
+  task :tower, [:command] do |task, args|
+    args.with_defaults(:command => 'start')
+
+    def start
+      puts '----- Starting the tower -----'
+      sh 'docker-compose up -d valutti-service'
+    end
+
+    def stop
+      puts '----- Stopping the tower -----'
+      sh 'docker-compose rm -fs valutti-service'
+    end
+
+    @switch.call(args, method(:start), method(:stop))
+  end  
+
   desc '[Optional] Run utils (postmaster)'
   task :utils, [:command] do |task, args|
     args.with_defaults(:command => 'start')
