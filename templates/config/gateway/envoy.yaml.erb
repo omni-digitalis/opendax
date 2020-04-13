@@ -38,10 +38,10 @@ static_resources:
                   cluster: applogic
                   prefix_rewrite: "/api/v2/"
               - match:
-                  prefix: "/api/v2/valutti"
+                  prefix: "/api/v2/valutti/users"
                 route:
                   cluster: valutti-service
-                  prefix_rewrite: "/"                  
+                  prefix_rewrite: "/users"                  
               - match:
                   prefix: "/api/v2/arke"
                 route:
