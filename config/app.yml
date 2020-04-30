@@ -9,7 +9,11 @@ ssl:
 images:
   peatio: quay.io/openware/peatio:2.3.47
   barong: quay.io/openware/barong:2.3.45
-  frontend: react-exchange-frontend:latest
+  frontend: quay.io/openware/baseapp:2.3.26
+  #Check on quay.io/openware/baseapp for latest tags
+  #frontend: react-exchange-frontend:latest
+  #registry.gitlab.com/valutti-exchange/react-exchange-frontend:v202004272219
+  #react-exchange-frontend:latest
   #registry.gitlab.com/valutti-exchange/react-exchange-frontend:0.0.2
   #react-exchange-frontend:latest #quay.io/openware/baseapp:2.3.26 # Check on quay.io/openware/baseapp for latest tags
   tower: quay.io/openware/tower:2.3.137
